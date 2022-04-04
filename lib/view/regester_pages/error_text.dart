@@ -12,7 +12,7 @@ class ErrorText extends StatelessWidget {
     return Align(
       alignment: Alignment.topLeft,
       child: Padding(
-        padding: EdgeInsets.only(left: 0),
+        padding: const EdgeInsets.only(left: 0),
        // padding: EdgeInsets.only(top: height * 0.02, bottom: height * 0.18),
         child: Text(
           errorText == null ? '' : '• $errorText',

@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
-
 import '../../color/app_color.dart';
-import 'home_page.dart';
-class LikePage extends StatefulWidget {
-  const LikePage({Key? key}) : super(key: key);
-
+class PrivacyPolicy extends StatefulWidget {
+  const PrivacyPolicy({Key? key}) : super(key: key);
+  static const String id="privacy_policy";
 
   @override
-  _LikePageState createState() => _LikePageState();
+  _PrivacyPolicyState createState() => _PrivacyPolicyState();
 }
 
-class _LikePageState extends State<LikePage> {
+class _PrivacyPolicyState extends State<PrivacyPolicy> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,12 +18,12 @@ class _LikePageState extends State<LikePage> {
         backgroundColor: AppColor.background,
         leading: IconButton(
             onPressed: (){
-              Navigator.pushNamed(context, HomePage.id);
+              Navigator.pop(context);
             },
             icon: const Icon(Icons.arrow_back_ios,color: Colors.black,)
         ),
 
-        title: const Text("Like",style: TextStyle(color: Colors.black,fontSize: 18,fontWeight: FontWeight.w600),),
+        title: const Text("Privacy Policy",style: TextStyle(color: Colors.black,fontSize: 18,fontWeight: FontWeight.w600),),
         centerTitle: true,
         elevation: 0,
       ),

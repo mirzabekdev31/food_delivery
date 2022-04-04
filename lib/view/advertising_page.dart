@@ -3,7 +3,7 @@ import 'package:food_delivery/color/app_color.dart';
 import 'package:food_delivery/view/regester_pages/regester_page.dart';
 class AdvertisingPage extends StatefulWidget {
   const AdvertisingPage({Key? key}) : super(key: key);
-  static final String id="advertising_page";
+  static const String id="advertising_page";
 
   @override
   _AdvertisingPageState createState() => _AdvertisingPageState();
@@ -18,7 +18,7 @@ class _AdvertisingPageState extends State<AdvertisingPage> {
           Container(
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft,
@@ -33,7 +33,7 @@ class _AdvertisingPageState extends State<AdvertisingPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                padding: EdgeInsets.only(top: 56,left: 56),
+                padding: const EdgeInsets.only(top: 56,left: 56),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -44,7 +44,7 @@ class _AdvertisingPageState extends State<AdvertisingPage> {
                           borderRadius: BorderRadius.circular(35),
                           color: Colors.white
                       ),
-                      child: Center(
+                      child: const Center(
                         child: Image(
                           image: AssetImage("assets/images/ic_cook.png"),
                         ),
@@ -52,11 +52,25 @@ class _AdvertisingPageState extends State<AdvertisingPage> {
                     ),
                     const SizedBox(height: 31,),
                     const Text("Food for\nEveryone",style: TextStyle(color: Colors.white,fontSize: 63,fontWeight: FontWeight.bold,)),
-                    SizedBox(height: 218,),
+                    //SizedBox(height: 218,),
 
                   ],
                 ),
               ),
+
+               const SizedBox(height: 10,),
+
+               const Center(
+                 child: ClipOval(
+                    child: Image(
+                      height: 250,
+                        width: 250,
+                        image: AssetImage("assets/images/cook2.png")
+                    )
+              ),
+               ),
+
+              const SizedBox(height: 40,),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -72,7 +86,7 @@ class _AdvertisingPageState extends State<AdvertisingPage> {
                       borderRadius: BorderRadius.circular(35),
                       color: Colors.white,
                     ),
-                    child: Center(
+                    child: const Center(
                       child: Text("Get started",style: TextStyle(color: Colors.red,fontSize: 17,fontWeight: FontWeight.w600),),
                     ),
                   ),

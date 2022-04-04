@@ -1,15 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:food_delivery/color/app_color.dart';
-import 'package:food_delivery/view/home_page/custom_advensed_drover.dart';
 import 'package:food_delivery/view/home_page/like_page.dart';
 import 'package:food_delivery/view/home_page/my_profil_page.dart';
 
 import 'home_page_item_home.dart';
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
-  static final String id="home_page";
+  static const String id="home_page";
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -36,7 +34,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: PageView(
         controller: _pageController,
-        children: [
+        children: const [
           HomePageItem(),
           LikePage(),
           MyPrfilPage()
@@ -51,11 +49,11 @@ class _HomePageState extends State<HomePage> {
         onTap: (int index) {
           _currentTab = index;
           _pageController.animateToPage(index,
-              duration: Duration(milliseconds: 200), curve: Curves.easeIn);
+              duration: const Duration(milliseconds: 200), curve: Curves.easeIn);
         },
         currentIndex: _currentTab,
         activeColor: AppColor.activeColor,
-        items: [
+        items: const [
           BottomNavigationBarItem(
               icon: Icon(Icons.home),
               label: "Home"),

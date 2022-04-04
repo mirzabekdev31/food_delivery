@@ -49,7 +49,7 @@ class _HomePageItemState extends State<HomePageItem> with SingleTickerProviderSt
         body: Column(
             children: [
               Padding(
-                padding: EdgeInsets.only(left: 50,top: 43,right:50),
+                padding: const EdgeInsets.only(left: 50,top: 43,right:50),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -94,19 +94,19 @@ class _HomePageItemState extends State<HomePageItem> with SingleTickerProviderSt
                         ),
                       ),
                     ),
-                    SizedBox(height: 46,),
+                    const SizedBox(height: 46,),
                     Container(
                       child: TabBar(
                           controller: _tabController,
                           labelColor: Colors.red,
                           indicatorSize: TabBarIndicatorSize.label,
-                          indicator: UnderlineTabIndicator(
+                          indicator: const UnderlineTabIndicator(
                             borderSide: BorderSide(width: 3.0,color: Colors.red),
                             insets: EdgeInsets.symmetric(horizontal:60.0),
                           ),
                           indicatorColor: Colors.red,
                           labelPadding: EdgeInsets.only(bottom: 20),
-                          tabs: [
+                          tabs: const [
                             Text("Foods",style: TextStyle(color: Colors.black),),
                             Text("Drinks",style: TextStyle(color: Colors.black),),
 
@@ -121,18 +121,15 @@ class _HomePageItemState extends State<HomePageItem> with SingleTickerProviderSt
                           padding:const EdgeInsets.only(left: 50,top: 43),
                           child: TabBarView(
                             controller: _tabController,
-                            children: [
-                             const Expanded(child: FoodsPage()),
-                             const Expanded(child: Text("Hello"))
+                            children: const [
+                             Expanded(child: FoodsPage()),
+                             Expanded(child: Text("Hello"))
                             ],
                           ),
                         ),
-
-
                 ),
             ],
           ),
-
       ),
     );
   }

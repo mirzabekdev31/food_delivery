@@ -1,8 +1,14 @@
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:food_delivery/color/app_color.dart';
-import 'package:food_delivery/view/home_page/home_page.dart';
+import 'package:food_delivery/view/home_page/basket_page.dart';
+import 'package:food_delivery/view/home_page/my_profil_page.dart';
+import 'package:food_delivery/view/home_page/offer_and_promo.dart';
+import 'package:food_delivery/view/home_page/privacy_policy.dart';
+import 'package:provider/provider.dart';
+import '../../view_model/auth_view_model.dart';
+import '../regester_pages/regester_page.dart';
 
 
 class CustomAdvancedDrawer extends StatefulWidget {
@@ -26,7 +32,7 @@ class _CustomAdvancedDrawerState extends State<CustomAdvancedDrawer> {
       animateChildDecoration: false,
       animationDuration: const Duration(milliseconds: 300),
       controller: widget.advancedDrawerController,
-      childDecoration: BoxDecoration(
+      childDecoration: const BoxDecoration(
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(16),
           topLeft: Radius.circular(16),
@@ -47,7 +53,7 @@ class _CustomAdvancedDrawerState extends State<CustomAdvancedDrawer> {
                   padding: const EdgeInsets.only(left: 18, bottom: 12, top: 36),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+                    children: const [
 
                     ],
                   ),
@@ -56,42 +62,58 @@ class _CustomAdvancedDrawerState extends State<CustomAdvancedDrawer> {
                   'Profile',
                   Icons.person,
                     (){
-                    Navigator.pushNamed(context, HomePage.id);
+                    Navigator.pushNamed(context, MyPrfilPage.id);
                     }
                 ),
-                SizedBox(height: 26,),
+                const SizedBox(height: 26,),
 
                 _buildListTile('Orders', Icons.bookmark, () {
-
+                  Navigator.pushNamed(context, BasketPage.id);
                 }),
-                SizedBox(height: 26,),
+                const SizedBox(height: 26,),
 
                 _buildListTile(
                   'offer and promo',
-                  Icons.edit,
-                      () {}
+                  Icons.edit,() {
+                    Navigator.pushNamed(context, OfferAndPromo.id);
+                  }
                 ),
-                SizedBox(height: 26,),
+                const SizedBox(height: 26,),
 
-                _buildListTile('Privacy policy', Icons.credit_card, () {}),
-                SizedBox(height: 26,),
+                _buildListTile('Privacy policy', Icons.credit_card, () {
+                  Navigator.pushNamed(context, PrivacyPolicy.id);
+                }),
+                const SizedBox(height: 26,),
 
-                _buildListTile('Security', Icons.help, () {}),
-                SizedBox(height: 26,),
+                _buildListTile('Security', Icons.help, () {
+
+                }),
+                const SizedBox(height: 26,),
                  Padding(
-                  padding: EdgeInsets.only(left: 16, top: 36),
+                  padding: const EdgeInsets.only(left: 16, top: 36),
                   child: TextButton(
                     onPressed: (){
 
                     },
-                    child: Text(
-                          "Sign-out ->",
-                          style: TextStyle(
-                            fontSize: 24,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w400,
+                    child: InkWell(
+                      onTap: (){
+                        FirebaseAuth.instance.signOut();
+                        final authVM =
+                        Provider.of<AuthViewModel>(context, listen: false);
+                        authVM.authStatus = AuthStatus.NOT_SIGN_IN;
+
+                        Navigator.pushNamedAndRemoveUntil(
+                            context, RegesterPage.id, (r) => false);
+                      },
+                      child: const Text(
+                            "Sign-out ->",
+                            style: TextStyle(
+                              fontSize: 24,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w400,
+                            ),
                           ),
-                        ),
+                    ),
                   ),
 
                 ),

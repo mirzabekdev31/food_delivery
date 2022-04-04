@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery/color/app_color.dart';
 class BasketPage extends StatefulWidget {
   const BasketPage({Key? key}) : super(key: key);
-  static final String id="basket_page";
+  static const String id="basket_page";
 
   @override
   _BasketPageState createState() => _BasketPageState();
@@ -23,15 +23,14 @@ class _BasketPageState extends State<BasketPage> {
               icon: Icon(Icons.arrow_back_ios,color: Colors.black,)
           ),
 
-        title: Text("Orders",style: TextStyle(color: Colors.black,fontSize: 18,fontWeight: FontWeight.w600),),
+        title: const Text("Orders",style: TextStyle(color: Colors.black,fontSize: 18,fontWeight: FontWeight.w600),),
         centerTitle: true,
         elevation: 0,
       ),
-
       body: Padding(
-        padding: EdgeInsets.only(left: 50,top: 60),
+        padding: const EdgeInsets.only(left: 50,top: 60),
         child: Column(
-          children: [
+          children: const [
           ],
         ),
       ),

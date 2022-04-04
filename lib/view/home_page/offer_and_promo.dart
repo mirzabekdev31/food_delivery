@@ -1,31 +1,28 @@
 import 'package:flutter/material.dart';
-
 import '../../color/app_color.dart';
-import 'home_page.dart';
-class LikePage extends StatefulWidget {
-  const LikePage({Key? key}) : super(key: key);
-
+class OfferAndPromo extends StatefulWidget {
+  const OfferAndPromo({Key? key}) : super(key: key);
+  static const String id="offer_and_promo";
 
   @override
-  _LikePageState createState() => _LikePageState();
+  _OfferAndPromoState createState() => _OfferAndPromoState();
 }
 
-class _LikePageState extends State<LikePage> {
+class _OfferAndPromoState extends State<OfferAndPromo> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  Scaffold(
       backgroundColor: AppColor.background,
       appBar: AppBar(
-
         backgroundColor: AppColor.background,
         leading: IconButton(
             onPressed: (){
-              Navigator.pushNamed(context, HomePage.id);
+              Navigator.pop(context);
             },
             icon: const Icon(Icons.arrow_back_ios,color: Colors.black,)
         ),
 
-        title: const Text("Like",style: TextStyle(color: Colors.black,fontSize: 18,fontWeight: FontWeight.w600),),
+        title: const Text("Offer And Promo",style: TextStyle(color: Colors.black,fontSize: 18,fontWeight: FontWeight.w600),),
         centerTitle: true,
         elevation: 0,
       ),

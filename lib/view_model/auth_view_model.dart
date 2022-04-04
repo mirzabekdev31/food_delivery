@@ -1,4 +1,3 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -6,7 +5,6 @@ import '../model/user.dart';
 
 class AuthViewModel extends ChangeNotifier {
   var _status = AuthStatus.NOT_SIGN_IN;
-  var _signInMethod = SignInMethod.EMAIL;
 
   String _errorMessage = "";
   MyUser? _currentUser;
@@ -50,23 +48,17 @@ class AuthViewModel extends ChangeNotifier {
       }
     } catch (e) {
       _errorMessage = e.toString();
-      print(e);
+      //print(e);
     }
   }
-
-
   saveCredentials(MyUser user, {pass, credential}) async {
     final CollectionReference userCollections =
     FirebaseFirestore.instance.collection('users');
     try {
       final userDoc = userCollections.doc(user.id);
       await userDoc.set(user.toJson());
-      if (_signInMethod == SignInMethod.EMAIL) {
-        signIn(user.email, pass);
-      } else if (_signInMethod == SignInMethod.GOOGLE) {
-        _status = AuthStatus.COMPLETED;
-        notifyListeners();
-      }
+      signIn(user.email, pass);
+      notifyListeners();
     } catch (e) {
       print("user-collection-exception: $e");
     }
@@ -82,21 +74,19 @@ class AuthViewModel extends ChangeNotifier {
         notifyListeners();
       });
     } on FirebaseAuthException catch (e) {
-      // showLoader(false);
+
       if (e.code == 'user-not-found') {
         _errorMessage = 'No user found for that email.';
       } else if (e.code == 'wrong-password') {
         _errorMessage = 'Wrong password provided for that user.';
       }
     } catch (e) {
-      // showLoader(false);
       _errorMessage = e.toString();
     }
   }
 
    getCurrentUser() async {
     final id = FirebaseAuth.instance.currentUser?.uid;
-
     var currentUser =
     await FirebaseFirestore.instance.collection('users').doc(id).get();
 
@@ -109,4 +99,3 @@ class AuthViewModel extends ChangeNotifier {
 }
 
 enum AuthStatus { NOT_SIGN_IN, LOADING, COMPLETED, ERROR }
-enum SignInMethod { PHONE, EMAIL, GOOGLE }

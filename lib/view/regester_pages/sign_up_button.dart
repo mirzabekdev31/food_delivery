@@ -24,11 +24,11 @@ class SignUpButton extends StatelessWidget {
           ),
           height: 56,
           width: double.infinity,
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
+          child: const Padding(
+            padding: EdgeInsets.all(16.0),
             child: Text(
               'Sign up',
-              style: const TextStyle(
+              style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w700,
                   color: Colors.white),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../color/app_color.dart';
 import 'form_lilds.dart';
 class LoginPage extends StatefulWidget {
@@ -15,10 +14,9 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.background,
-      body:  Padding(
+      body:Padding(
           padding: const EdgeInsets.symmetric(horizontal: 22.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: ListView(
             children: [
               FormFields(),
             ],

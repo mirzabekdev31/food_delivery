@@ -7,7 +7,7 @@ import '../home_page/home_page.dart';
 import 'error_text.dart';
 class SingUpFormFilds extends StatefulWidget {
   const SingUpFormFilds({Key? key}) : super(key: key);
-  static final String id="sign_up_form_filds";
+  static const String id="sign_up_form_filds";
 
   @override
   _SingUpFormFildsState createState() => _SingUpFormFildsState();
